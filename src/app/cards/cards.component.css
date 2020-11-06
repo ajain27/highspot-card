@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.content {
+    margin: 10px;
+    display: flex;
+}
+.card {
+    width: 350px !important;
+    margin: 10px;
+}
+::ng-deep .mat-card-header-text  {
+    position: relative !important;
+    left: 35% !important;
+}
+
+[mat-card-image] {
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+::ng-deep .mat-card-content {
+    text-align: center !important;
+}
+::ng-deep .mat-card-actions p {
+    position: relative;
+    left: 23%;
+}
