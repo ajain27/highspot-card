@@ -48,15 +48,5 @@ export class CardsComponent implements OnInit, AfterViewInit {
     ).subscribe(res => {
       this.searchResults = res.cards;
     })
-  }
-
-  // public onScroll() {
-  //   this._cardService.getCards().subscribe(cards => {
-  //     if(this._itemsToLoadInitially <= cards.length) {
-  //       this._itemsToLoadInitially += this._cardsToLoad;
-  //       this.cards = cards.slice(0, this._itemsToLoadInitially);
-  //     }
-  //   })
-  //   this.getCards();  
-  // }
+  }    
 }
