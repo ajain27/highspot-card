@@ -13,6 +13,9 @@ export class SearchService {
   constructor(private _http: HttpClient) { }
 
   public getSearchResults(name): Observable<any> {
-    return this._http.get<any>(this.url, { params: new HttpParams().set('name', name) });
+    let params = new HttpParams();
+    params = params.append('name', name);
+    params = params.append('pageSize', '20');
+    return this._http.get<any>(this.url, { params: params});
   }
 }

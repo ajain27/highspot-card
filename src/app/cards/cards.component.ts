@@ -19,7 +19,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
   public cards: CardData;
   public showSpinner: boolean;
   private _itemsToLoadInitially: number = 20;
-  private _cardsToLoad: number = 20;
+  // private _cardsToLoad: number = 20;
   public page: number = 1;
   public searchResult: any = '';
 
@@ -40,7 +40,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
       switchMap(res => this._searchService.getSearchResults(res))
     ).subscribe(res => {
       this.searchResults = res.cards;
-      this.searchResults = res.cards.slice(0, this._itemsToLoadInitially);
+      // this.searchResults = res.cards.slice(0, this._itemsToLoadInitially);
     })
   }
 
