@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatFormFieldModule,  MatInputModule, MatProgressSpinnerModule } from '@angular/material';
+import { ScrollingModule } from "@angular/cdk/scrolling";
 
 const MaterialComponents = [
   MatButtonModule,
@@ -11,7 +12,8 @@ const MaterialComponents = [
   MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  ScrollingModule
 ]
 
 @NgModule({

@@ -33,5 +33,6 @@ body {
 ::ng-deep .mat-spinner {
     margin: auto;
     position: relative;
-    top: 200px;
+    top: 100px;
+    z-index: 999;
 }

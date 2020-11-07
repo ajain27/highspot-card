@@ -5,11 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CardsService {
 
+
+export class CardsService {
+  private cards = 'https://api.elderscrollslegends.io/v1/cards';
+  
   constructor(private _http: HttpClient) { }
 
   public getCards(): Observable<any> {
-    return this._http.get('https://api.elderscrollslegends.io/v1/cards');
+    return this._http.get(this.cards);
   }
 }
