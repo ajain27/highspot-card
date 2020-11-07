@@ -10,24 +10,35 @@ body {
     width: 350px !important;
     margin: 10px;
 }
+.card:hover {
+    background: #cce0ff;
+}
 ::ng-deep .mat-card-header-text  {
     margin: auto !important;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 [mat-card-image] {
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 300px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
+[mat-card-image]:hover {
+    transform: scale(1.1);
+}
+
 ::ng-deep .mat-card-content {
     text-align: center !important;
+    font-family: 'Courier New', Courier, monospace;
 }
 ::ng-deep .mat-card-actions p {
     position: relative;
-    left: 23%;
+    left: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    width: auto;
 }
 
 ::ng-deep .mat-spinner {
@@ -35,4 +46,15 @@ body {
     position: relative;
     top: 100px;
     z-index: 999;
+}
+
+::ng-deep .mat-card-actions, .mat-card-content, .mat-card-subtitle {
+    margin-bottom: 25px !important;
+}
+.margin0 {
+    margin: 0;
+}
+
+.custom-padding {
+    padding: 0px 15px 0px 0px;
 }

@@ -13,8 +13,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
 
   @ViewChild('searchForm') searchForm: NgForm;
   
-  constructor(private _searchService: SearchService) { 
-  }
+  constructor(private _searchService: SearchService) { }
 
   public cards: CardData;
   public showSpinner: boolean;
