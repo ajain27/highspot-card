@@ -41,7 +41,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
       debounceTime(1000),
       // will not make an API call if search term isnt changed
       distinctUntilChanged(),
-      // will cancel the previous calls if search term is changed
+      // will cancel the previous calls if search term is changed with in the debounce time - performance enhancement
       switchMap(res => this._searchService.getSearchResults(res)),
       // stop the spinner once the API call has been made 
       tap(()=> this.showSpinner = false)
