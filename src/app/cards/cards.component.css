@@ -11,8 +11,7 @@ body {
     margin: 10px;
 }
 ::ng-deep .mat-card-header-text  {
-    position: relative !important;
-    left: 35% !important;
+    margin: auto !important;
 }
 
 [mat-card-image] {
@@ -29,4 +28,10 @@ body {
 ::ng-deep .mat-card-actions p {
     position: relative;
     left: 23%;
+}
+
+::ng-deep .mat-spinner {
+    margin: auto;
+    position: relative;
+    top: 200px;
 }

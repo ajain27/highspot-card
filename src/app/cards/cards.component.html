@@ -6,70 +6,20 @@
 </div>
 
 <div class="content">
+  <!-- <mat-progress-spinner value="100"></mat-progress-spinner> -->
+  <mat-spinner *ngIf="showSpinner" ></mat-spinner>
   <div class="row">
-    <mat-card class="mat-elevation-z4 card col-xl-2 col-lg-3 col-md-4 col-sm-6">
+    <mat-card class="mat-elevation-z4 card col-xl-2 col-lg-3 col-md-4 col-sm-6" *ngFor="let card of cards" >
       <mat-card-header>
-        <mat-card-title>Name</mat-card-title>
+        <mat-card-title>{{card.name}}</mat-card-title>
       </mat-card-header>
-      <img mat-card-image src="https://images.elderscrollslegends.io/cs/adoring_fan.png" />
+      <img mat-card-image src="{{card.imageUrl}}" />
       <mat-card-content>
-        <p>Text</p>
+        <p style="min-height: 37px; max-height: 35px;">{{card.text}}</p>
       </mat-card-content>
       <mat-card-actions>
-        <p><strong>Set Name:</strong></p>
-        <p><strong>Type:</strong></p>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card class="mat-elevation-z4 card col-lg-3 col-md-4 col-sm-6">
-      <mat-card-header>
-        <mat-card-title>Name</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="https://images.elderscrollslegends.io/cs/adoring_fan.png" />
-      <mat-card-content>
-        <p>Text</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <p><strong>Set Name:</strong></p>
-        <p><strong>Type:</strong></p>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card class="mat-elevation-z4 card col-lg-3 col-md-4 col-sm-6">
-      <mat-card-header>
-        <mat-card-title>Name</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="https://images.elderscrollslegends.io/cs/adoring_fan.png" />
-      <mat-card-content>
-        <p>Text</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <p><strong>Set Name:</strong></p>
-        <p><strong>Type:</strong></p>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card class="mat-elevation-z4 card col-lg-3 col-md-4 col-sm-6">
-      <mat-card-header>
-        <mat-card-title>Name</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="https://images.elderscrollslegends.io/cs/adoring_fan.png" />
-      <mat-card-content>
-        <p>Text</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <p><strong>Set Name:</strong></p>
-        <p><strong>Type:</strong></p>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card class="mat-elevation-z4 card col-lg-3 col-md-4 col-sm-6">
-      <mat-card-header>
-        <mat-card-title>Name</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="https://images.elderscrollslegends.io/cs/adoring_fan.png" />
-      <mat-card-content>
-        <p>Text</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <p><strong>Set Name:</strong></p>
-        <p><strong>Type:</strong></p>
+        <p><strong>Set Name: {{card.set.name}}</strong></p>
+        <p><strong>Type: {{card.type}}</strong></p>
       </mat-card-actions>
     </mat-card>
   </div>
