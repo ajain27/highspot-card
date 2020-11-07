@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, map, pluck, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, pluck, switchMap, tap } from 'rxjs/operators';
 import { SearchService } from '../service/search.service';
 import { CardData } from '../models/Card';
 
@@ -23,24 +23,24 @@ export class CardsComponent implements OnInit, AfterViewInit {
   public page: number = 1;
   public searchResult: any = '';
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   ngAfterViewInit(): void {
-    this.getCards();
+      this.getCards();    
   }
 
   public getCards() {
-    // getting the typed value in the textbox as a observable 
+    // getting the typed value in the textbox as a observable
     const formValue = this.searchForm.valueChanges;
     formValue.pipe(
       pluck('search'),
+      tap(()=> this.showSpinner = true),
       debounceTime(1000),
-      distinctUntilChanged(),
-      switchMap(res => this._searchService.getSearchResults(res))
+      distinctUntilChanged(),      
+      switchMap(res => this._searchService.getSearchResults(res)),
+      tap(()=> this.showSpinner = false)
     ).subscribe(res => {
       this.searchResults = res.cards;
-      // this.searchResults = res.cards.slice(0, this._itemsToLoadInitially);
     })
   }
 
