@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { CardsComponent } from './cards/cards.component';
-import { SearchComponent } from './search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -14,8 +13,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
-    CardsComponent,
-    SearchComponent
+    CardsComponent
   ],
   imports: [
     BrowserModule,

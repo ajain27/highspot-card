@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CardsService } from '../service/cards.service';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, map, pluck, switchMap } from 'rxjs/operators';
+import { SearchService } from '../service/search.service';
 import { CardData } from '../models/Card';
 
 @Component({
@@ -7,9 +9,11 @@ import { CardData } from '../models/Card';
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css']
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent implements OnInit, AfterViewInit {
 
-  constructor(private _cardService: CardsService) { 
+  @ViewChild('searchForm') searchForm: NgForm;
+  searchResults: CardData;
+  constructor(private _searchService: SearchService) { 
   }
 
   public cards: CardData;
@@ -17,35 +21,36 @@ export class CardsComponent implements OnInit {
   private _itemsToLoadInitially: number = 20;
   private _cardsToLoad: number = 20;
   public page: number = 1;
-  public searchText: any = '';
+  public searchResult: any = '';
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
     this.getCards();
   }
 
-  public getCards(): any {
-    this.showSpinner = true;
-    setTimeout(() => {
-      this._cardService.getCards().subscribe(res => {
-        console.log(res.cards.length);
-        this.cards = res.cards.slice(0, this._itemsToLoadInitially);
-        console.log(this.cards);
-        this.showSpinner = false;
-      });
-    }, 2000);
-  }
-
-  public onScroll() {
-    this._cardService.getCards().subscribe(cards => {
-      if(this._itemsToLoadInitially <= cards.length) {
-        this._itemsToLoadInitially += this._cardsToLoad;
-        this.cards = cards.slice(0, this._itemsToLoadInitially);
-      }
+  public getCards() {
+    // getting the typed value in the textbox as a observable 
+    const formValue = this.searchForm.valueChanges;
+    formValue.pipe(
+      pluck('search'),
+      debounceTime(1000),
+      distinctUntilChanged(),
+      switchMap(res => this._searchService.getSearchResults(res))
+    ).subscribe(res => {
+      this.searchResults = res.cards;
+      this.searchResults = res.cards.slice(0, this._itemsToLoadInitially);
     })
-    this.getCards();  
   }
 
-  public gettingFilteredResults(e: Event): void {
-    this.searchText = e;
-  }
+  // public onScroll() {
+  //   this._cardService.getCards().subscribe(cards => {
+  //     if(this._itemsToLoadInitially <= cards.length) {
+  //       this._itemsToLoadInitially += this._cardsToLoad;
+  //       this.cards = cards.slice(0, this._itemsToLoadInitially);
+  //     }
+  //   })
+  //   this.getCards();  
+  // }
 }

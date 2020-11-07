@@ -1,8 +1,15 @@
-<app-search (data)="gettingFilteredResults($event)"></app-search>
+<div class="text-center">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <form #searchForm = "ngForm">
+      <input matInput ngModel name="search" autocomplete="off">
+    </form>    
+  </mat-form-field>
+</div>
 <div class="content">
   <mat-spinner *ngIf="showSpinner"></mat-spinner>
   <div class="row">
-    <mat-card class="mat-elevation-z4 card col-xl-2 col-lg-3 col-md-4 col-sm-6" *ngFor="let card of cards | filter:searchText">
+    <mat-card class="mat-elevation-z4 card col-xl-2 col-lg-3 col-md-4 col-sm-6" *ngFor="let card of searchResults">
       <mat-card-header>
         <mat-card-title>{{card.name}}</mat-card-title>
       </mat-card-header>

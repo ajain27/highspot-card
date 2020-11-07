@@ -5,7 +5,7 @@ export interface CardData {
     id: string;
     imageUrl: string;
     name: string;
-    rarity: string;
+    rarity?: string;
     set: {
         id: string;
         name: string;
@@ -13,5 +13,5 @@ export interface CardData {
     }
     text: string;
     type: string;
-    unique?: boolean
+    unique?: boolean;
 }
