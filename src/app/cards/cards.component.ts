@@ -20,8 +20,6 @@ export class CardsComponent implements OnInit, AfterViewInit {
   public numberOfCards: number;
   public viewCards: boolean;
   public cardTtitle: string;
-  public pageSize = 20;
-
   public notEmptyCard = true;
   public notScrollY = true;
   public pageNumber = 1;
@@ -85,6 +83,8 @@ export class CardsComponent implements OnInit, AfterViewInit {
         this.notEmptyCard = false;
       }
       this.searchResults = this.searchResults.concat(newCardsReturned);
+      this.numberOfCards = this.searchResults.length;
+      this.cardTtitle = this.numberOfCards === 1 ? 'card' : ' cards';
       this.notScrollY = true;
     });
   }
