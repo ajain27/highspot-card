@@ -9,6 +9,7 @@ import { CardsComponent } from './cards/cards.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     HttpClientModule,
     InfiniteScrollModule,
     FormsModule,
-    ScrollingModule
+    ScrollingModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
