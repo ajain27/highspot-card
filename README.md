@@ -8,4 +8,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Installing the node packages instructions
 
-1. Clone the repo 
+1. Clone the repo https://github.com/ajain27/highspot-card.git
+2. Get into the project folder and run npm install
+3. Run command ng serve
