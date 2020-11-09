@@ -1,10 +1,15 @@
 <div class="text-center">
-  <mat-form-field>
-    <mat-label>Search</mat-label>
-    <form #searchForm = "ngForm">
-      <input matInput ngModel name="search" autocomplete="off">
+  <!-- <mat-form-field> -->
+    <!-- <mat-label>Search a card</mat-label> -->
+    <form #searchForm = "ngForm" style="margin-top: 15px;">
+      <label class="expandSearch">
+        <input type="text" ngModel name="search" autocomplete="off" placeholder="Search a card">
+        <i class="material-icons search-icon">search</i>
+      </label>
+      
+      <!-- <i class="material-icons search-icon">search</i> -->
     </form>    
-  </mat-form-field>
+  <!-- </mat-form-field> -->
 </div>
 <mat-spinner *ngIf="showSpinner"></mat-spinner>
 <div class="content">  
