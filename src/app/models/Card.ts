@@ -1,7 +1,7 @@
 export interface CardData {
     attributes?: string;
-    collectible: string
-    cost?: number
+    collectible: string;
+    cost?: number;
     id: string;
     imageUrl: string;
     name: string;
@@ -10,7 +10,7 @@ export interface CardData {
         id: string;
         name: string;
         _self: string;
-    }
+    };
     text: string;
     type: string;
     unique?: boolean;
