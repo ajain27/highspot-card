@@ -18,7 +18,7 @@ export class SearchService {
     return this._http.get<any>(this.url, { params: params});
   }
 
-  public getCards(pageNumber): Observable<any> {
+  public loadCards(pageNumber): Observable<any> {
     let params = new HttpParams();
     params = params.append('page', pageNumber);
     params = params.append('pageSize', '20');

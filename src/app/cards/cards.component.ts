@@ -1,12 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, HostListener, NgZone, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, mergeMap, pluck, scan, switchMap, tap, throttle, throttleTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, pluck, switchMap, tap} from 'rxjs/operators';
 import { SearchService } from '../service/search.service';
 import { CardData } from '../models/Card';
-// import { CdkVirtualScrollViewport, ScrollDispatcher } from '@angular/cdk/scrolling';
-import { BehaviorSubject, of } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -30,25 +27,21 @@ export class CardsComponent implements OnInit, AfterViewInit {
   public pageNumber = 1;
 
   @ViewChild('searchForm') searchForm: NgForm;
-  // @ViewChild(CdkVirtualScrollViewport) virtualScroll: CdkVirtualScrollViewport;
 
   constructor(private _searchService: SearchService,
-    private spinner: NgxSpinnerService,
-    private _http: HttpClient) {
+    private spinner: NgxSpinnerService) {
     this.viewCards = false;
     this.searchPageNumber = 0;
     this.searchResults = [];
   }
 
-  ngOnInit() {
-    // this.nextSearchPage(this.searchPageNumber);
-  }
+  ngOnInit() {  }
 
   ngAfterViewInit(): void {
     this.getCards();
   }
 
-  public getCards() {
+  public getCards(): void {
     // getting the typed value in the textbox as a observable
     const formValue = this.searchForm.valueChanges;
     formValue.pipe(
@@ -71,11 +64,11 @@ export class CardsComponent implements OnInit, AfterViewInit {
       this.cardTtitle = this.numberOfCards === 1 ? 'card' : ' cards';
     });
   }
-  public trackByIdx(i) {
+  public trackByIdx(i: any) {
     return i;
   }
 
-  public onScroll() {
+  public onScroll(): void {
     if (this.notEmptyCard && this.notScrollY) {
       this.spinner.show();
       this.notScrollY = false;
@@ -83,10 +76,10 @@ export class CardsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public getNewCards() {
+  public getNewCards(): void {
     this.pageNumber++;
-    this._searchService.getCards(this.pageNumber).subscribe(newCards => {
-      const newCardsReturned = newCards.cards;
+    this._searchService.loadCards(this.pageNumber).subscribe(newCards => {
+      const newCardsReturned = newCards && newCards.cards ? newCards.cards : null;
       this.spinner.hide();
       if (newCardsReturned === 0) {
         this.notEmptyCard = false;
