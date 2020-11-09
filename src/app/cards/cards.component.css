@@ -3,9 +3,18 @@ body {
   padding: 0;
 }
 
+cdk-virtual-scroll-viewport {
+  height: 425vh;
+  width: 82%;
+  position: absolute;
+  left: 8%;
+}
+
 .content {
-  margin: 10px;
+  margin: auto;
   display: flex;
+  width: 80%;
+  /* overflow-y: scroll; */
 }
 
 .card {
@@ -13,6 +22,7 @@ body {
   width: 350px !important;
   margin: 10px;
   background: #CCC;
+  height: 425px;
 }
 
 .card:hover {
@@ -116,4 +126,11 @@ body {
   /*padding: 8px 4px 8px 8px ;*/
   color: #ddd;
   pointer-events: none;
+}
+
+.numbers {
+  height: 100opx;
+}
+.test-container {
+  height: 400px;
 }

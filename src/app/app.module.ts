@@ -8,7 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { CardsComponent } from './cards/cards.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HttpClientModule,
     InfiniteScrollModule,
     FormsModule,
-    Ng2SearchPipeModule
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

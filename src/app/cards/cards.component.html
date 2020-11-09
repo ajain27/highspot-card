@@ -1,37 +1,33 @@
-<div class="text-center">
-  <!-- <mat-form-field> -->
-    <!-- <mat-label>Search a card</mat-label> -->
-    <form #searchForm = "ngForm" style="margin-top: 15px;">
+  <div class="text-center">
+    <form #searchForm="ngForm" style="margin-top: 15px;">
       <label class="expandSearch">
         <input type="text" ngModel name="search" autocomplete="off" placeholder="Search a card">
         <i class="material-icons search-icon">search</i>
       </label>
-      
-      <!-- <i class="material-icons search-icon">search</i> -->
-    </form>    
-  <!-- </mat-form-field> -->
-</div>
-<mat-spinner *ngIf="showSpinner"></mat-spinner>
-<div class="content">  
-  <div class="row">
-    <mat-card class="mat-elevation-z4 card col-xl-2 col-lg-3 col-md-4 col-sm-6" *ngFor="let card of searchResults">
-      <mat-card-header>
-        <mat-card-title><strong>{{card.name}}</strong></mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="{{card.imageUrl}}" />
-      <mat-card-content>
-        <p style="min-height: 37px; max-height: 35px;">{{card.text}}</p>
-      </mat-card-content>
-      <mat-card-actions style="margin-top: 5px;">
-        <div class="row margin0">
-          <div class="col-sm-4 text-right custom-padding">Set Name:</div>
-          <div class="col-sm-8" style="padding: 0;"><strong>{{card.set.name}}</strong></div>
-        </div>
-        <div class="row margin0">
-          <div class="col-sm-4 text-center">Type:</div>
-          <div class="col-sm-8" style="padding: 0;"><strong>{{card.type}}</strong></div>
-        </div>
-      </mat-card-actions>
-    </mat-card>
+    </form>
+    <p *ngIf="viewCards" style="color: #A8A8A8;">{{cardsLength}} {{cardsText}} found</p>
   </div>
-</div>
+  <mat-spinner *ngIf="showSpinner"></mat-spinner>
+  <div class="content">
+    <div class="row">
+      <mat-card class="mat-elevation-z4 card col-xl-2 col-lg-3 col-md-4 col-sm-6" *ngFor="let card of searchResults">
+        <mat-card-header>
+          <mat-card-title><strong>{{card.name}}</strong></mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{card.imageUrl}}" />
+        <mat-card-content>
+          <p style="min-height: 37px; max-height: 35px;">{{card.text}}</p>
+        </mat-card-content>
+        <mat-card-actions style="margin-top: 5px;">
+          <div class="row margin0">
+            <div class="col-sm-4 text-right custom-padding">Set Name:</div>
+            <div class="col-sm-8" style="padding: 0;"><strong>{{card.set.name}}</strong></div>
+          </div>
+          <div class="row margin0">
+            <div class="col-sm-4 text-center">Type:</div>
+            <div class="col-sm-8" style="padding: 0;"><strong>{{card.type}}</strong></div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
